@@ -14,16 +14,47 @@
 // This functions should check the integrity of the parameters and pass true/false
 function checkParamsFn(year, month, day) {
   // Write your code here
+  if(Number.isInteger(year)==true && Number.isInteger(month)==true&& Number.isInteger(day)==true){
+    return true
+  }
+  else
+  return false;
 }
+
 
 // This functions checks if the person is or above 18 years of age, return true/false
 function checkOverEighteenFn(year, month, day) {
-  // Write your code here
+  //Write your code here
+  const d = new Date();
+
+  if((d.getFullYear()-year)>18 ){
+    return "error:";
+ }
+  else if((d.getFullYear()-year)===18 ){
+     if(month>(d.getMonth()+1)){
+         return "error:"; 
+     }
+     else if(month===(d.getMonth()+1)){
+     if(day>= d.getDate()){
+       return "error:";
+     }
+     else return false;
+  }
+     else return false;
+  }
+  else return false;
 }
 
 function calculateAgeFn(year, month, day) {
   // Write your code here
+  checkParamsFn(year, month, day);
+  checkOverEighteenFn(year, month, day);
+  const d = new Date();
+  const age=d.getFullYear()-year;
+   return  "error:";
 }
+console.log(calculateAgeFn(1988,3,15));
+
 
 // Look at the naming of the functions. it looks like salwaBaqer, where
 // the first letter of the first word is small, while the first letter of the
